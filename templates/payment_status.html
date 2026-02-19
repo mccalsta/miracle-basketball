@@ -1,1 +1,19 @@
-<!-- Add HTML content here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Status</title>
+</head>
+<body>
+    <h1>Payment Status: {{ status }}</h1>
+    <p>Registration ID: {{ registration.id }}</p>
+    <p>Name: {{ registration.name }}</p>
+    <p>Phone: {{ registration.phone }}</p>
+
+    <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+
+    <a href="{{ url_for('download_receipt', reg_id=registration.id) }}">
+        <button>Download Receipt PDF</button>
+    </a>
+</body>
+</html>
