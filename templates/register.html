@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br>
+
+        <label>Phone (2567XXXXXXXX):</label><br>
+        <input type="text" name="phone" required><br>
+
+        <label>Date of Birth:</label><br>
+        <input type="date" name="dob" required><br>
+
+        <label>Gender:</label><br>
+        <select name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br>
+
+        <label>Occupation:</label><br>
+        <input type="text" name="occupation" required><br>
+
+        <label>City:</label><br>
+        <input type="text" name="city" required><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
 <!-- Add HTML content here -->
