@@ -1,1 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Receipt{% endblock %}
+
+{% block content %}
+<h1>Registration Receipt</h1>
+
+<p><strong>Registration ID:</strong> {{ registration.id }}</p>
+<p><strong>Name:</strong> {{ registration.name }}</p>
+<p><strong>Email:</strong> {{ registration.email }}</p>
+<p><strong>Phone:</strong> {{ registration.phone }}</p>
+<p><strong>Date:</strong> {{ registration.date }}</p>
+<p><strong>Status:</strong> COMPLETED</p>
+
+<img src="data:image/png;base64,{{ qr_code }}" alt="QR Code" style="margin-top:20px;">
+
+<br><br>
+<a href="{{ url_for('download_receipt', reg_id=registration.id) }}">
+    <button>Download PDF</button>
+</a>
+
+<a href="{{ url_for('home') }}">
+    <button style="background-color:#3498db;">Back to Home</button>
+</a>
+{% endblock %}
 <!-- Add HTML content here -->
