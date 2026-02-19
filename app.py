@@ -1,3 +1,8 @@
+@app.route("/health")
+def health():
+    return "OK", 200
+
+
 from flask import Flask, render_template, request, redirect, url_for, session, send_file, flash
 import sqlite3
 import uuid
