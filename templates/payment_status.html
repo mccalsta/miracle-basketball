@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Payment Status</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% extends "base.html" %}
 
-</head>
-<body>
-    <h1>Payment Status: {{ status }}</h1>
-    <p>Registration ID: {{ registration.id }}</p>
-    <p>Name: {{ registration.name }}</p>
-    <p>Phone: {{ registration.phone }}</p>
+{% block title %}Payment Status{% endblock %}
 
-    <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+{% block content %}
+<h1>Payment Status</h1>
+<p><strong>Registration ID:</strong> {{ registration.id }}</p>
+<p><strong>Name:</strong> {{ registration.name }}</p>
+<p><strong>Status:</strong> {{ status }}</p>
 
-    <a href="{{ url_for('download_receipt', reg_id=registration.id) }}">
-        <button>Download Receipt PDF</button>
-    </a>
-</body>
-</html>
+<img src="data:image/png;base64,{{ qr_code }}" alt="QR Code" style="margin-top:20px;">
+
+<br><br>
+<a href="{{ url_for('download_receipt', reg_id=registration.id) }}">
+    <button>Download Receipt (PDF)</button>
+</a>
+<a href="{{ url_for('home') }}">
+    <button style="background-color:#3498db;">Back to Home</button>
+</a>
+{% endblock %}
+
