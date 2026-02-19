@@ -1,6 +1,4 @@
-
-
-
+import os
 from flask import Flask, render_template, request, redirect, url_for, session, send_file, flash
 import sqlite3
 import uuid
@@ -10,7 +8,22 @@ from utils.qrcode_generator import generate_qr
 from utils.pdf_generator import generate_pdf
 from io import BytesIO
 
-app = Flask(__name__)
+# --- FORCE ABSOLUTE PATHS (CRITICAL FIX) ---
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, "templates"),
+    static_folder=os.path.join(BASE_DIR, "static")
+)
+
+app.config.from_object(Config)
+
+# Helpful for debugging template errors on Railway
+app.config["TEMPLATES_AUTO_RELOAD"] = True
+app.config["PROPAGATE_EXCEPTIONS"] = True
+
+
 app.config.from_object(Config)
 
 @app.route("/health")
