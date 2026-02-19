@@ -1,6 +1,4 @@
-@app.route("/health")
-def health():
-    return "OK", 200
+
 
 
 from flask import Flask, render_template, request, redirect, url_for, session, send_file, flash
@@ -14,6 +12,10 @@ from io import BytesIO
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
+@app.route("/health")
+def health():
+    return "OK", 200
 
 def get_db_connection():
     conn = sqlite3.connect(app.config['DATABASE'])
