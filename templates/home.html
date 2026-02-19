@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Miracle Basketball Registration</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <h1>Welcome to Miracle Basketball Registration</h1>
-    <p>Register for the tournament easily online!</p>
-    <a href="{{ url_for('register') }}">
-        <button>Register & Pay</button>
-    </a>
-</body>
-</html>
-<!-- Add HTML content here -->
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Welcome to Miracle Basketball Registration</h1>
+<p>Register for the tournament easily online!</p>
+<a href="{{ url_for('register') }}"><button>Register</button></a>
+{% endblock %}
+
