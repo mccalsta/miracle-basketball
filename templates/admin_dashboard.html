@@ -1,1 +1,28 @@
-<!-- Add HTML content here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <a href="{{ url_for('admin_logout') }}">Logout</a>
+    <table border="1">
+        <tr>
+            <th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Date</th><th>Actions</th>
+        </tr>
+        {% for reg in registrations %}
+        <tr>
+            <td>{{ reg.id }}</td>
+            <td>{{ reg.name }}</td>
+            <td>{{ reg.email }}</td>
+            <td>{{ reg.phone }}</td>
+            <td>{{ reg.date }}</td>
+            <td>
+                <a href="{{ url_for('admin_delete', reg_id=reg.id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
